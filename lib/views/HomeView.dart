@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/AddNoteSheet.dart';
 import 'widgets/CustomAppBar.dart';
 import 'widgets/CustomNoteItem.dart';
 import 'widgets/NotesListView.dart';
@@ -12,9 +13,15 @@ class Homeview extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            child: Icon(Icons.add),
-            shape: CircleBorder(),
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return const AddNoteSheet();
+                  });
+            },
+            shape: const CircleBorder(),
+            child: const Icon(Icons.add),
           ),
           body: Column(
             children: [
