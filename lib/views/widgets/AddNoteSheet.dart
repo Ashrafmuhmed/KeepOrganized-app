@@ -17,7 +17,14 @@ class AddNoteSheet extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
           ),
-          CustomTextField()
+          CustomTextField(label: 'Note'),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: CustomTextField(
+              label: 'Description',
+              maxLines: 5,
+            ),
+          )
         ],
       ),
     );
