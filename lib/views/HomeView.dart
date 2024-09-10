@@ -33,7 +33,7 @@ class Homeview extends StatelessWidget {
               //   height: 45,
               // ),
               CustomAppBar(),
-              NotesListView()
+              NotesListView(),
             ],
           )),
     );
