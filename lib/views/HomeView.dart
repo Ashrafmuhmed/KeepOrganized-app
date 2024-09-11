@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/widgets/CustomSearchIcon.dart';
 
 import 'widgets/AddNoteSheet.dart';
 import 'widgets/CustomAppBar.dart';
-import 'widgets/CustomNoteItem.dart';
 import 'widgets/NotesListView.dart';
 
 class Homeview extends StatelessWidget {
@@ -32,7 +32,11 @@ class Homeview extends StatelessWidget {
               // SizedBox(
               //   height: 45,
               // ),
-              CustomAppBar(),
+              CustomAppBar(
+                  icon: CustomIcon(
+                    icon: Icons.search,
+                  ),
+                  title: 'Notes App'),
               NotesListView(),
             ],
           )),
