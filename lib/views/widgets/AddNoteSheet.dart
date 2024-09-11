@@ -11,11 +11,11 @@ class AddNoteSheet extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height / 1.4,
       width: MediaQuery.of(context).size.width,
-      child: SingleChildScrollView(
+      child: const SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(20.0),
               child: Text(
                 'Add Note',
                 style: TextStyle(fontSize: 20),
@@ -23,7 +23,7 @@ class AddNoteSheet extends StatelessWidget {
             ),
             CustomTextField(label: 'Note'),
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: EdgeInsets.only(top: 20),
               child: CustomTextField(
                 label: 'Description',
                 maxLines: 5,

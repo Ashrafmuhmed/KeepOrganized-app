@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
         maxLines: maxLines,
         cursorColor: Colors.pinkAccent,
         decoration: InputDecoration(
-            label: Text('Note'),
+            label: Text(label),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(6)),
                 borderSide: BorderSide(color: Colors.green)),
