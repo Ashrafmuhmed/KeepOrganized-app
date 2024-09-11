@@ -8,7 +8,7 @@ class Editnotebody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return  SafeArea(
       child: Column(
         children: [
           CustomAppBar(
@@ -19,13 +19,18 @@ class Editnotebody extends StatelessWidget {
           SizedBox(
             height: 44,
           ),
-          CustomTextField(label: 'Title'),
+          CustomTextField(label: 'Title',onsaved: (p0) {
+            
+          },),
           SizedBox(
             height: 20,
           ),
           CustomTextField(
             label: 'Description',
             maxLines: 5,
+            onsaved: (p0) {
+              
+            },
           ),
         ],
       ),
