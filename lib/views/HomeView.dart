@@ -27,18 +27,21 @@ class Homeview extends StatelessWidget {
             shape: const CircleBorder(),
             child: const Icon(Icons.add),
           ),
-          body: Column(
-            children: [
-              // SizedBox(
-              //   height: 45,
-              // ),
-              CustomAppBar(
-                  icon: CustomIcon(
-                    icon: Icons.search,
-                  ),
-                  title: 'Notes App'),
-              NotesListView(),
-            ],
+          body: Container(
+            height: MediaQuery.of(context).size.height,
+            child: const Column(
+              children: [
+                // SizedBox(
+                //   height: 45,
+                // ),
+                CustomAppBar(
+                    icon: CustomIcon(
+                      icon: Icons.search,
+                    ),
+                    title: 'Notes App'),
+                NotesListView(),
+              ],
+            ),
           )),
     );
   }

@@ -18,19 +18,17 @@ class AddNoteSheet extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 1.4,
         width: MediaQuery.of(context).size.width,
         child: BlocConsumer<AddNoteCubit, AddNotesState>(
-          listener: (context, state) {
-            if (state is AddNoteFailure) {
-              print('Failed');
-            } else if (state is AddNoteSuccess) {
-              Navigator.pop(context);
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-                inAsyncCall: state is AddNoteLoading ? true : false,
-                child: AddNoteForm());
-          },
-        ),
+            listener: (context, state) {
+          if (state is AddNoteFailure) {
+            print('Failed');
+          } else if (state is AddNoteSuccess) {
+            Navigator.pop(context);
+          }
+        }, builder: (context, state) {
+          return AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true : false,
+              child: AddNoteForm());
+        }),
       ),
     );
   }

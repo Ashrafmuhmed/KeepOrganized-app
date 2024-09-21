@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/Constants/constants.dart';
 import 'package:notes_app/SimpleBlocObserver.dart';
-import 'package:notes_app/cubits/AddNoteCubit/AddNotesCubit.dart';
 import 'package:notes_app/models/NoteModel.dart';
 import 'package:notes_app/views/EditeNoteView.dart';
 import 'package:notes_app/views/HomeView.dart';
