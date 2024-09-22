@@ -4,6 +4,7 @@ import 'package:notes_app/cubits/AddNoteCubit/AddNoteState.dart';
 import 'package:notes_app/cubits/AddNoteCubit/AddNotesCubit.dart';
 import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
 import 'package:notes_app/models/NoteModel.dart';
+import 'package:notes_app/views/widgets/ColorsListView.dart';
 import 'package:notes_app/views/widgets/CustomButton.dart';
 import 'package:notes_app/views/widgets/CustomTextField.dart';
 
@@ -79,57 +80,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ColorItem extends StatelessWidget {
-  const ColorItem({super.key, required this.isActive});
-
-  final bool isActive;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
-        height: 40,
-        width: isActive ? 55 : 40,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(
-              colors: [Colors.amber, Colors.blueAccent],
-              begin: Alignment.topCenter,
-              end: AlignmentDirectional.bottomCenter),
-        ),
-      ),
-    );
-  }
-}
-
-class ColorsListView extends StatefulWidget {
-  const ColorsListView({super.key, required this.isActive});
-  final bool isActive;
-
-  @override
-  State<ColorsListView> createState() => _ColorsListViewState();
-}
-
-class _ColorsListViewState extends State<ColorsListView> {
-  int currentIndex = 0;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 2 * 38,
-      child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: 55,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return ColorItem(
-              isActive: currentIndex == index  ,
-            );
-          }),
     );
   }
 }
