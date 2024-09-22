@@ -10,7 +10,10 @@ class CustomNoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, Editnoteview.id),
+      onTap: () =>
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return Editnoteview(note: note);
+      })),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 1),
         decoration: BoxDecoration(

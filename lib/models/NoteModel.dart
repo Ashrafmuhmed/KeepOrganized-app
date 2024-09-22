@@ -1,13 +1,14 @@
 import 'package:hive/hive.dart';
 part 'NoteModel.g.dart';
+
 @HiveType(typeId: 0)
 class Notemodel extends HiveObject {
   @HiveField(0)
-  final String title;
+  String title;
   @HiveField(1)
-  final String description;
+  String description;
   @HiveField(2)
-  final String dateTime;
+  String dateTime;
   @HiveField(3)
   final int color1;
   @HiveField(4)

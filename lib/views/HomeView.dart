@@ -57,17 +57,19 @@ class _HomeviewState extends State<Homeview> {
           ),
           body: Container(
             height: MediaQuery.of(context).size.height,
-            child: const Column(
+            child: Column(
               children: [
                 // SizedBox(
                 //   height: 45,
                 // ),
                 CustomAppBar(
-                    icon: CustomIcon(
-                      icon: Icons.search,
-                    ),
-                    title: 'Notes App'),
-                NotesListView(),
+                  icon: const CustomIcon(
+                    icon: Icons.search,
+                  ),
+                  title: 'Notes App',
+                  onPressed: () {},
+                ),
+                const NotesListView(),
               ],
             ),
           )),

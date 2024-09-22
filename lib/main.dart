@@ -34,7 +34,6 @@ class NotesApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           Homeview.id: (context) => Homeview(),
-          Editnoteview.id: (context) => Editnoteview()
         },
         theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
         initialRoute: Homeview.id,
