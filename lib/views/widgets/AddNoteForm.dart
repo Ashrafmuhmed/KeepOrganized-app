@@ -84,28 +84,39 @@ class _AddNoteFormState extends State<AddNoteForm> {
 }
 
 class ColorItem extends StatelessWidget {
-  const ColorItem({super.key});
+  const ColorItem({super.key, required this.isActive});
+
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      height: 40,
-      width: 40,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: LinearGradient(
-            colors: [Colors.amber, Colors.blueAccent],
-            begin: Alignment.topCenter,
-            end: AlignmentDirectional.bottomCenter),
+    return GestureDetector(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        height: 40,
+        width: isActive ? 55 : 40,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+              colors: [Colors.amber, Colors.blueAccent],
+              begin: Alignment.topCenter,
+              end: AlignmentDirectional.bottomCenter),
+        ),
       ),
     );
   }
 }
 
-class ColorsListView extends StatelessWidget {
-  const ColorsListView({super.key});
+class ColorsListView extends StatefulWidget {
+  const ColorsListView({super.key, required this.isActive});
+  final bool isActive;
 
+  @override
+  State<ColorsListView> createState() => _ColorsListViewState();
+}
+
+class _ColorsListViewState extends State<ColorsListView> {
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -115,7 +126,9 @@ class ColorsListView extends StatelessWidget {
           itemCount: 55,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return ColorItem();
+            return ColorItem(
+              isActive: currentIndex == index  ,
+            );
           }),
     );
   }

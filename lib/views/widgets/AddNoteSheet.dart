@@ -11,7 +11,7 @@ class AddNoteSheet extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddNoteCubit(),
       child: Container(
-        height: MediaQuery.of(context).size.height / 1.4,
+        height: MediaQuery.of(context).size.height / 1.2,
         width: MediaQuery.of(context).size.width,
         child: BlocConsumer<AddNoteCubit, AddNotesState>(
             listener: (context, state) {
