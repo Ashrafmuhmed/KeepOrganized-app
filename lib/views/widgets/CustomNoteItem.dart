@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
 import 'package:notes_app/models/NoteModel.dart';
-import 'package:notes_app/views/EditeNoteView.dart';
+import 'package:notes_app/views/NoteDisplay.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key, required this.note});
@@ -10,10 +10,14 @@ class CustomNoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return Editnoteview(note: note);
-      })),
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Notedisplay(
+                note: note,
+              )))
+      //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      //   return Editnoteview(note: note);
+      // }
+      ,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 1),
         decoration: BoxDecoration(
@@ -37,19 +41,21 @@ class CustomNoteItem extends StatelessWidget {
               ),
               subtitle: Text(
                 note.description,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                     color: Color.fromARGB(255, 81, 81, 81), fontSize: 24),
               ),
-              trailing: IconButton(
-                  onPressed: () async {
-                    await note.delete();
-                    BlocProvider.of<NotesCubitCubit>(context).fetchAllNotes();
-                  },
-                  icon: const Icon(
-                    Icons.delete,
-                    color: Colors.black,
-                    size: 30,
-                  )),
+              // trailing: IconButton(
+              //     onPressed: () async {
+              //       await note.delete();
+              //       BlocProvider.of<NotesCubitCubit>(context).fetchAllNotes();
+              //     },
+              //     icon: const Icon(
+              //       Icons.delete,
+              //       color: Colors.black,
+              //       size: 30,
+              //     )),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),

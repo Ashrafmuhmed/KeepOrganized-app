@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/AddNoteCubit/AddNotesCubit.dart';
 import 'package:notes_app/models/GradientColor.dart';
 
 class ColorItem extends StatelessWidget {
@@ -28,7 +30,6 @@ class ColorsListView extends StatefulWidget {
   const ColorsListView({
     super.key,
   });
-
   @override
   State<ColorsListView> createState() => _ColorsListViewState();
 }
@@ -65,6 +66,8 @@ class _ColorsListViewState extends State<ColorsListView> {
             return GestureDetector(
               onTap: () {
                 currentIndex = index;
+                BlocProvider.of<AddNoteCubit>(context).gradientcolor =
+                    gradientColor[index];
                 setState(() {});
               },
               child: ColorItem(

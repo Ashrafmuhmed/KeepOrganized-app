@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.onTap, this.isLoading = false});

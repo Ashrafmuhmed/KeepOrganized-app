@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
 import 'package:notes_app/models/NoteModel.dart';
+import 'package:notes_app/views/widgets/ColorsListView.dart';
 import 'package:notes_app/views/widgets/CustomAppBar.dart';
 import 'package:notes_app/views/widgets/CustomSearchIcon.dart';
 import 'package:notes_app/views/widgets/CustomTextField.dart';
@@ -86,6 +87,7 @@ class _EditnotebodyState extends State<Editnotebody> {
               subTitle = editedSubTitle;
             },
           ),
+          ColorsListView()
         ],
       ),
     );
