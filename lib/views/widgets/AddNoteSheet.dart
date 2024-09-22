@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/AddNoteCubit/AddNotesCubit.dart';
+import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
 import 'package:notes_app/views/widgets/AddNoteForm.dart';
 import '../../cubits/AddNoteCubit/AddNoteState.dart';
 // import 'package:notes_app/views/widgets/CustomTextField.dart';
@@ -22,6 +23,7 @@ class AddNoteSheet extends StatelessWidget {
           if (state is AddNoteFailure) {
             print('Failed');
           } else if (state is AddNoteSuccess) {
+
             Navigator.pop(context);
           }
         }, builder: (context, state) {

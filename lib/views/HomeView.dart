@@ -21,59 +21,56 @@ class _HomeviewState extends State<Homeview> {
   List<Widget> bottomBar = const [Icon(Icons.add), Icon(Icons.person)];
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubitCubit(),
-      child: SafeArea(
-        child: Scaffold(
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: const Color.fromARGB(54, 0, 0, 0),
-              items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Notes'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: 'Profile'),
+    return SafeArea(
+      child: Scaffold(
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: const Color.fromARGB(54, 0, 0, 0),
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Notes'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: 'Profile'),
+            ],
+            currentIndex: _currentIndex,
+            onTap: (int newIndex) {
+              setState(() {
+                _currentIndex = newIndex;
+              });
+            },
+          ),
+          resizeToAvoidBottomInset: true,
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              showModalBottomSheet(
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15))),
+                  context: context,
+                  builder: (context) {
+                    return const AddNoteSheet();
+                  });
+            },
+            shape: const CircleBorder(),
+            child: const Icon(Icons.add),
+          ),
+          body: Container(
+            height: MediaQuery.of(context).size.height,
+            child: const Column(
+              children: [
+                // SizedBox(
+                //   height: 45,
+                // ),
+                CustomAppBar(
+                    icon: CustomIcon(
+                      icon: Icons.search,
+                    ),
+                    title: 'Notes App'),
+                NotesListView(),
               ],
-              currentIndex: _currentIndex,
-              onTap: (int newIndex) {
-                setState(() {
-                  _currentIndex = newIndex;
-                });
-              },
             ),
-            resizeToAvoidBottomInset: true,
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                showModalBottomSheet(
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15))),
-                    context: context,
-                    builder: (context) {
-                      return const AddNoteSheet();
-                    });
-              },
-              shape: const CircleBorder(),
-              child: const Icon(Icons.add),
-            ),
-            body: Container(
-              height: MediaQuery.of(context).size.height,
-              child: const Column(
-                children: [
-                  // SizedBox(
-                  //   height: 45,
-                  // ),
-                  CustomAppBar(
-                      icon: CustomIcon(
-                        icon: Icons.search,
-                      ),
-                      title: 'Notes App'),
-                  NotesListView(),
-                ],
-              ),
-            )),
-      ),
+          )),
     );
   }
 }

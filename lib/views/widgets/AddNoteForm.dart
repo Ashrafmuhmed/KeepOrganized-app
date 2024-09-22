@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/AddNoteCubit/AddNoteState.dart';
 import 'package:notes_app/cubits/AddNoteCubit/AddNotesCubit.dart';
+import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
 import 'package:notes_app/models/NoteModel.dart';
 import 'package:notes_app/views/widgets/CustomButton.dart';
 import 'package:notes_app/views/widgets/CustomTextField.dart';
@@ -66,6 +67,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                         color1: Colors.amber.value,
                         color2: const Color.fromARGB(255, 255, 106, 0).value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                    BlocProvider.of<NotesCubitCubit>(context).fetchAllNotes();
                   } else {
                     autovalid = AutovalidateMode.always;
                     setState(() {});
