@@ -11,10 +11,10 @@ class CustomNoteItem extends StatelessWidget {
       onTap: () => Navigator.pushNamed(context, Editnoteview.id),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 1),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(16)),
             gradient: LinearGradient(
-                colors: [Colors.amber, Colors.cyan],
+                colors: [Color(note.color1), Color(note.color2)],
                 begin: AlignmentDirectional.topStart,
                 end: Alignment.bottomRight)),
         // height: 150,

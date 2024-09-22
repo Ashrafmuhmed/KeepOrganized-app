@@ -10,10 +10,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Bloc.observer = Simpleblocobserver();
   Hive.registerAdapter(NotemodelAdapter());
-  await Hive.openBox<Notemodel>(knotebox);
+  try {
+    await Hive.openBox<Notemodel>(knotebox);
+  } on Exception catch (e) {
+    print('Error : $e');
+  }
   runApp(const NotesApp());
 }
 
