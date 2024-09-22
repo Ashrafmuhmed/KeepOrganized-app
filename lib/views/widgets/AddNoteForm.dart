@@ -50,8 +50,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
               },
             ),
           ),
+          ColorsListView(),
           const SizedBox(
-            height: 41,
+            height: 35,
           ),
           BlocBuilder<AddNoteCubit, AddNotesState>(
             builder: (context, state) {
@@ -78,6 +79,44 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ColorItem extends StatelessWidget {
+  const ColorItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+            colors: [Colors.amber, Colors.blueAccent],
+            begin: Alignment.topCenter,
+            end: AlignmentDirectional.bottomCenter),
+      ),
+    );
+  }
+}
+
+class ColorsListView extends StatelessWidget {
+  const ColorsListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 2 * 38,
+      child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: 55,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return ColorItem();
+          }),
     );
   }
 }
