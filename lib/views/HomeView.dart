@@ -1,21 +1,46 @@
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
 import 'package:notes_app/views/widgets/CustomSearchIcon.dart';
-
+import 'dart:ui';
 import 'widgets/AddNoteSheet.dart';
 import 'widgets/CustomAppBar.dart';
 import 'widgets/NotesListView.dart';
 
-class Homeview extends StatelessWidget {
+class Homeview extends StatefulWidget {
   const Homeview({super.key});
-  static final String id = 'homeview';
+  static const String id = 'homeview';
+
+  @override
+  State<Homeview> createState() => _HomeviewState();
+}
+
+class _HomeviewState extends State<Homeview> {
+  int _currentIndex = 0;
+  List<Widget> bottomBar = const [Icon(Icons.add), Icon(Icons.person)];
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => NotesCubitCubit(),
       child: SafeArea(
         child: Scaffold(
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: const Color.fromARGB(54, 0, 0, 0),
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Notes'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.person), label: 'Profile'),
+              ],
+              currentIndex: _currentIndex,
+              onTap: (int newIndex) {
+                setState(() {
+                  _currentIndex = newIndex;
+                });
+              },
+            ),
             resizeToAvoidBottomInset: true,
             floatingActionButton: FloatingActionButton(
               onPressed: () {
