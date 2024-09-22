@@ -20,22 +20,7 @@ class _HomeviewState extends State<Homeview> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: const Color.fromARGB(54, 0, 0, 0),
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Notes'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Profile'),
-            ],
-            currentIndex: _currentIndex,
-            onTap: (int newIndex) {
-              setState(() {
-                _currentIndex = newIndex;
-              });
-            },
-          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           resizeToAvoidBottomInset: true,
           floatingActionButton: FloatingActionButton(
             onPressed: () {
@@ -63,7 +48,7 @@ class _HomeviewState extends State<Homeview> {
                   icon: const CustomIcon(
                     icon: Icons.search,
                   ),
-                  title: 'Notes App',
+                  title: 'KeepNotes',
                   onPressed: () {},
                 ),
                 const NotesListView(),
