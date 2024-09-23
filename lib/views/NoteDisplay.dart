@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
 import 'package:notes_app/models/NoteModel.dart';
-import 'package:notes_app/views/EditeNoteView.dart';
+import 'package:notes_app/views/widgets/NotesWids/EditeNoteView.dart';
 
 class Notedisplay extends StatelessWidget {
   const Notedisplay({super.key, required this.note});
@@ -30,7 +30,7 @@ class Notedisplay extends StatelessWidget {
                       return AlertDialog(
                         title: const Text("Confirm"),
                         content: const Text(
-                            "Are you sure you want to SAVE what you edited?"),
+                            "Are you sure you want to delete this note?"),
                         actions: <Widget>[
                           TextButton(
                             onPressed: () {

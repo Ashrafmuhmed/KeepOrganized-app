@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/widgets/CustomSearchIcon.dart';
+import 'package:notes_app/views/widgets/GeneralWids/CustomSearchIcon.dart';
 import 'dart:ui';
-import 'widgets/AddNoteSheet.dart';
-import 'widgets/CustomAppBar.dart';
-import 'widgets/NotesListView.dart';
+import 'widgets/NotesWids/AddNoteSheet.dart';
+import 'widgets/GeneralWids/CustomAppBar.dart';
+import 'widgets/NotesWids/NotesListView.dart';
 
 class Homeview extends StatefulWidget {
   const Homeview({super.key});

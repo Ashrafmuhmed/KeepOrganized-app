@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/AddNoteCubit/AddNoteState.dart';
-import 'package:notes_app/cubits/AddNoteCubit/AddNotesCubit.dart';
-import 'package:notes_app/cubits/NotesCubit/notes_cubit_cubit.dart';
-import 'package:notes_app/models/NoteModel.dart';
-import 'package:notes_app/views/widgets/ColorsListView.dart';
-import 'package:notes_app/views/widgets/CustomButton.dart';
-import 'package:notes_app/views/widgets/CustomTextField.dart';
+import 'package:notes_app/cubits/AddTaskCubit/add_task_cubit.dart';
+import 'package:notes_app/cubits/TasksCubit/tasks_cubit.dart';
+import 'package:notes_app/models/TaskModel.dart';
+import 'package:notes_app/views/widgets/GeneralWids/CustomButton.dart';
+import 'package:notes_app/views/widgets/GeneralWids/CustomTextField.dart';
 
-class AddNoteForm extends StatefulWidget {
-  AddNoteForm({
+class Addtaskform extends StatefulWidget {
+  Addtaskform({
     super.key,
   });
 
   @override
-  State<AddNoteForm> createState() => _AddNoteFormState();
+  State<Addtaskform> createState() => _AddNoteFormState();
 }
 
-class _AddNoteFormState extends State<AddNoteForm> {
+class _AddNoteFormState extends State<Addtaskform> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalid = AutovalidateMode.disabled;
   String? title, subTitle;
@@ -31,12 +30,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              'Add Note',
+              'Add Task',
               style: TextStyle(fontSize: 20),
             ),
           ),
           CustomTextField(
-            label: 'Note',
+            label: 'Title',
             onsaved: (value) {
               title = value;
             },
@@ -44,32 +43,28 @@ class _AddNoteFormState extends State<AddNoteForm> {
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: CustomTextField(
-              label: 'Description',
+              label: 'Subtitle',
               maxLines: 5,
               onsaved: (value) {
                 subTitle = value;
               },
             ),
           ),
-          ColorsListView(),
           const SizedBox(
             height: 35,
           ),
-          BlocBuilder<AddNoteCubit, AddNotesState>(
+          BlocBuilder<AddTaskCubit, AddTaskState>(
             builder: (context, state) {
               return CustomButton(
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    Notemodel note = Notemodel(
-                        dateTime: DateTime.now().toString().substring(0, 16),
-                        description: subTitle!,
-                        title: title!,
-                        color1: Colors.amber.value,
-                        color2: const Color.fromARGB(255, 255, 106, 0).value);
-                    BlocProvider.of<AddNoteCubit>(context).addNote(note);
-                    BlocProvider.of<NotesCubitCubit>(context).fetchAllNotes();
+                    Taskmodel task =
+                        Taskmodel(subtitle: subTitle!, title: title!);
+                    BlocProvider.of<AddTaskCubit>(context).addTask(task);
+                    BlocProvider.of<TasksCubit>(context).fetchAllTasks();
+                
                   } else {
                     autovalid = AutovalidateMode.always;
                     setState(() {});
