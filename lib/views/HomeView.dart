@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/widgets/GeneralWids/CustomSearchIcon.dart';
-import 'dart:ui';
-import 'widgets/NotesWids/AddNoteSheet.dart';
-import 'widgets/GeneralWids/CustomAppBar.dart';
-import 'widgets/NotesWids/NotesListView.dart';
+import 'package:notes_app/views/todo.dart';
+import 'package:notes_app/views/NotesHome.dart';
+
 
 class Homeview extends StatefulWidget {
   const Homeview({super.key});
@@ -14,47 +12,51 @@ class Homeview extends StatefulWidget {
 }
 
 class _HomeviewState extends State<Homeview> {
-  int _currentIndex = 0;
-  List<Widget> bottomBar = const [Icon(Icons.add), Icon(Icons.person)];
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  List<Widget> bottomBar = const [ Todo(),NotesHome(),];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.list),
+                label: 'Tasks',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.note),
+                label: 'Notes',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            type: BottomNavigationBarType.fixed,
+          ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           resizeToAvoidBottomInset: true,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              showModalBottomSheet(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15))),
-                  context: context,
-                  builder: (context) {
-                    return const AddNoteSheet();
-                  });
-            },
-            shape: const CircleBorder(),
-            child: const Icon(Icons.add),
-          ),
-          body: Container(
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              children: [
-                // SizedBox(
-                //   height: 45,
-                // ),
-                CustomAppBar(
-                  icon: const CustomIcon(
-                    icon: Icons.search,
-                  ),
-                  title: 'KeepNotes',
-                  onPressed: () {},
-                ),
-                const NotesListView(),
-              ],
-            ),
-          )),
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () {
+          //     showModalBottomSheet(
+          //         shape: const RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.only(
+          //                 topLeft: Radius.circular(15),
+          //                 topRight: Radius.circular(15))),
+          //         context: context,
+          //         builder: (context) {
+          //           return const AddNoteSheet();
+          //         });
+          //   },
+          //   shape: const CircleBorder(),
+          //   child: const Icon(Icons.add),
+          // ),
+          body: bottomBar[_selectedIndex]),
     );
   }
 }

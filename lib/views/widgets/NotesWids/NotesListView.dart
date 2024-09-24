@@ -29,12 +29,18 @@ class _NotesListViewState extends State<NotesListView> {
         List<Notemodel> notes =
             BlocProvider.of<NotesCubitCubit>(context).notes ?? [];
         return Expanded(
-            child: ListView.builder(
-          itemBuilder: (context, index) => CustomNoteItem(
-            note: notes.elementAt(index),
-          ),
-          itemCount: notes.length,
-        ));
+            child: notes.length == 0
+                ? Image.asset(
+                    'assets/Pics/Asset 2.png',
+                    height: 250,
+                    width: 250,
+                  )
+                : ListView.builder(
+                    itemBuilder: (context, index) => CustomNoteItem(
+                      note: notes.elementAt(index),
+                    ),
+                    itemCount: notes.length,
+                  ));
       },
     );
   }

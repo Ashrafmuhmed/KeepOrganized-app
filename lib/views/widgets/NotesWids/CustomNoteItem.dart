@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/models/NoteModel.dart';
-import 'package:notes_app/views/NoteDisplay.dart';
+import 'package:notes_app/views/widgets/NotesWids/NoteDisplay.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key, required this.note});

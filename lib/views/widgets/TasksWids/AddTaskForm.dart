@@ -61,7 +61,7 @@ class _AddNoteFormState extends State<Addtaskform> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     Taskmodel task =
-                        Taskmodel(subtitle: subTitle!, title: title!);
+                        Taskmodel(subtitle: subTitle!, title: title!,state: false);
                     BlocProvider.of<AddTaskCubit>(context).addTask(task);
                     BlocProvider.of<TasksCubit>(context).fetchAllTasks();
                 

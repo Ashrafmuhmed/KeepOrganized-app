@@ -1,3 +1,4 @@
+
 import 'package:hive/hive.dart';
 part 'TaskModel.g.dart';
 
@@ -7,5 +8,7 @@ class Taskmodel extends HiveObject {
   String? title;
   @HiveField(1)
   String? subtitle;
-  Taskmodel({required this.subtitle, required this.title});
+  @HiveField(3)
+  bool state;
+  Taskmodel({required this.subtitle, required this.title,required this.state});
 }

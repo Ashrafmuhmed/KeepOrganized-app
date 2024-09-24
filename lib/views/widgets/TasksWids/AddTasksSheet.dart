@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/cubits/AddNoteCubit/AddNotesCubit.dart';
 import 'package:notes_app/cubits/AddTaskCubit/add_task_cubit.dart';
-import 'package:notes_app/views/widgets/NotesWids/AddNoteForm.dart';
 import 'package:notes_app/views/widgets/TasksWids/AddTaskForm.dart';
-import '../../../cubits/AddNoteCubit/AddNoteState.dart';
 
 class Addtaskssheet extends StatelessWidget {
   const Addtaskssheet({super.key});
